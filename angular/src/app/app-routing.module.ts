@@ -49,6 +49,7 @@ import { DepartmentsComponent } from './school/departments/departments.component
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CourseComponent } from './school/departments/course/course.component';
+import { FeeComponent } from './school/fee/fee.component';
 
 
 const routes: Routes = [
@@ -174,6 +175,10 @@ const routes: Routes = [
                 path: "school/departments",
                 component: DepartmentsComponent
             },
+            {
+                path: "school/fee",
+                component: FeeComponent
+            }
 
         ]
     },
@@ -245,7 +250,8 @@ const routes: Routes = [
         Error404Component,
         Error500Component,
         DepartmentsComponent,
-        CourseComponent
+        CourseComponent,
+        FeeComponent
     ],
     imports: [RouterModule.forRoot(routes),
         BrowserModule,
