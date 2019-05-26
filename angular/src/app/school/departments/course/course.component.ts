@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Course } from './Course';
 import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
+import { Departments } from '../departments';
+import { CourseComponentService } from './course.component.service';
 
 
 @Component({
@@ -8,15 +10,18 @@ import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
     templateUrl: './course.component.html'
   })
   export class CourseComponent implements OnInit {
-    sections= ["A","B","C","D"];
-    dept = ["6th class","7th class","8th class","9th class","10th class"];
+    sections: Departments[];
+    dept = [];
     depts = 'Add Departments';
+    departments: Departments[]=[];
   //phaseForm: FormGroup;
   selectedValue: string;
   addSubj: FormGroup;
   course: Course = new Course();
 
-  constructor(private _fb: FormBuilder) {
+  constructor(private _fb: FormBuilder, private courseService: CourseComponentService ) {
+   
+   
   }
 
   ngOnInit() {
@@ -31,6 +36,12 @@ import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
       })
     });
     this.selectedValue = "";
+    this.courseService.getAllDepartments().subscribe(
+          departments => {
+            this.departments = departments;
+            console.log(this.departments);
+               
+         });
   }
 
   addPhase() {
@@ -39,6 +50,8 @@ import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
       comments: ['']
     });
   }
+
+
 
   addMorePhase() {
       alert("add more phase");
@@ -57,8 +70,13 @@ import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
   }
   removeInput(index) {
     console.log(index);
-     this.phaseArray.controls.splice(index,1) 
+     this.phaseArray.controls.splice(index,1) ;
     }
 
-  
+    onChangeDeptName(filterVal: any) {
+        alert("onchange");
+        this.sections = this.departments.filter((item) => item.deptName == filterVal);
+        console.log(this.departments);
+        
+      }
 }

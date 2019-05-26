@@ -6,6 +6,9 @@ import { AppRoutingModule } from './/app-routing.module';
 import { LayoutModule } from './/layouts/layout.module';
 import { ScriptLoaderService } from './_services/script-loader.service';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { AddDepartmentService } from './school/departments/add-department.service';
+import { HttpClientModule } from '@angular/common/http';
+import { CourseComponentService } from './school/departments/course/course.component.service';
 
 
 
@@ -18,9 +21,10 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     AppRoutingModule,
     LayoutModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [ScriptLoaderService],
+  providers: [ScriptLoaderService,AddDepartmentService, CourseComponentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

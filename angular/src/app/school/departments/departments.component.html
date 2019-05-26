@@ -13,7 +13,11 @@
       <div class="ibox">
         <div class="ibox">
           <div class="ibox-head">
-            <div class="ibox-title">add Class Form</div>
+            <div class="ibox-title">add Class Form
+              <th *ngIf="isSaved">
+                <p class="text-success">{{ deptName }} Departments are saved successfully.</p>
+              </th>
+            </div>
             <div class="ibox-tools">
               <a class="ibox-collapse"><i class="fa fa-minus"></i></a>
               <a class="fullscreen-link"><i class="fa fa-expand"></i></a>
@@ -28,9 +32,9 @@
                 </div>
                 <div class="form-group">
                   <label>Year</label>
-                  <select class="form-control" formControlName="acadamicYear">
+                  <select class="form-control" formControlName="deptDuration">
                     <option>choose</option>
-                    <option *ngFor="let acadamicYear of acadamicYear" [value]="acadamicYear">{{acadamicYear}}</option>
+                    <option *ngFor="let deptDuration of deptDuration" [value]="deptDuration">{{deptDuration}}</option>
                   </select>
                 </div>
                 <div class="col-6 m-b-20">
@@ -40,7 +44,7 @@
                 </div>
                 <div class="col-sm-6 form-group">
                   <label>Sections</label>
-                  <select class="form-control" formControlName="section">
+                  <select class="form-control" formControlName="sections">
                     <option>choose</option>
                     <option *ngFor="let sections of sections">{{sections}}</option>
                   </select>
@@ -48,7 +52,7 @@
 
                 <div class="col-sm-6 form-group">
                   <label>Max studnets per class r section</label>
-                  <select class="form-control" formControlName="maxStudent">
+                  <select class="form-control" formControlName="maxStudents">
                     <option>choose</option>
                     <option *ngFor="let maxCount of maxCount">{{maxCount}}</option>
                   </select>

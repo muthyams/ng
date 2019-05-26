@@ -1,9 +1,9 @@
 export class Departments
 {
     deptName:string;
-    acadamicYear:string;
+    deptDuration:string;
     isHostel:string;
-    section:number;
-    maxStudent:number;
+    sections:number;
+    maxStudents:number;
     board:string
 }

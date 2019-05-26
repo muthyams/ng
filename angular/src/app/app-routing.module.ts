@@ -52,6 +52,7 @@ import { CourseComponent } from './school/departments/course/course.component';
 import { FeeComponent } from './school/fee/fee.component';
 
 
+
 const routes: Routes = [
     { path: '', redirectTo: 'index', pathMatch: 'full' },
     {

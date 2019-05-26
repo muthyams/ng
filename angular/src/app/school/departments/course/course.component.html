@@ -13,9 +13,9 @@
             <div class="row">
                 <div class="col-sm-6 form-group">
                     <label>Class Name</label>
-                    <select class="form-control" formControlName="deptName">
+                    <select class="form-control" (change)="onChangeDeptName($event.target.value)" formControlName="deptName">
                             <option>choose</option>
-                            <option *ngFor="let dept of dept">{{dept}}</option>
+                            <option *ngFor="let departments of departments">{{departments.deptName}}</option>
                         </select>
                 </div>
 
@@ -23,7 +23,7 @@
                     <label>Sections</label>
                     <select class="form-control" formControlName="section">
                         <option>choose</option>
-                        <option *ngFor="let sections of sections">{{sections}}</option>
+                        <option *ngFor="let sections of sections">{{sections.sections}}</option>
                     </select>
                 </div>
                 <div class="col-6 m-b-20">
