@@ -9,4 +9,6 @@ export class Fee
     className:string;
     section:string;
     student:string;
+    paidDate:string;
+    
 }

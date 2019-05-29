@@ -9,11 +9,11 @@
         </div>
     </div>
     <div class="ibox-body">
-        <form [formGroup]="addSubj" (ngSubmit)="onSubmit()">
+        <form [formGroup]="courseForm" (ngSubmit)="onSubmit()">
             <div class="row">
                 <div class="col-sm-6 form-group">
                     <label>Class Name</label>
-                    <select class="form-control" (change)="onChangeDeptName($event.target.value)" formControlName="deptName">
+                    <select class="form-control" (change)="onChangeDeptName($event.target.value)" formControlName="departmentName">
                             <option>choose</option>
                             <option *ngFor="let departments of departments">{{departments.deptName}}</option>
                         </select>
@@ -41,14 +41,14 @@
                         <div class="form-row" *ngFor="let phase of phaseArray.controls; let i = index;"
                             [formGroupName]="i">
                             <div class="form-group col-md-4">
-                                <input type="text" class="form-control" placeholder="subject Name" id="subjectName"
-                                    formControlName="subjectName" />
+                                <input type="text" class="form-control" placeholder="subject Name" id="courseName1"
+                                    formControlName="courseName1" />
 
                             </div>
 
                             <div class="form-group col-md-4">
-                                <input class="form-control" id="comments" placeholder="comments"
-                                    formControlName="comments" />
+                                <input class="form-control" id="comments1" placeholder="comments"
+                                    formControlName="comments1" />
                             </div>
                             <button type="button" class="btn btn-outline-danger btn-sm"
                                 (click)="removeInput(i)">Remove</button>

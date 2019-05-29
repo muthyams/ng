@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   })
   export class FeeComponent implements OnInit {
    
+    feeTypes = ["addmission Fee", "school fee","hostel fee", "bus fee","Exam fee", "stationery fee"];
     ngOnInit(): void {
         throw new Error("Method not implemented.");
     }

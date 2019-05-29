@@ -3,80 +3,86 @@ import { Course } from './Course';
 import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { Departments } from '../departments';
 import { CourseComponentService } from './course.component.service';
+import { LText } from '@angular/core/src/render3/interfaces';
 
 
 @Component({
-    selector: 'app-course',
-    templateUrl: './course.component.html'
-  })
-  export class CourseComponent implements OnInit {
-    sections: Departments[];
-    dept = [];
-    depts = 'Add Departments';
-    departments: Departments[]=[];
+  selector: 'app-course',
+  templateUrl: './course.component.html'
+})
+export class CourseComponent implements OnInit {
+  sections: Departments[];
+  dept = [];
+  depts = 'Add Departments';
+  departments: Departments[] = [];
   //phaseForm: FormGroup;
   selectedValue: string;
-  addSubj: FormGroup;
+  courseForm: FormGroup;
   course: Course = new Course();
+  addCount: number = 0;
 
-  constructor(private _fb: FormBuilder, private courseService: CourseComponentService ) {
-   
-   
+  constructor(private _fb: FormBuilder, private courseService: CourseComponentService) {
   }
 
   ngOnInit() {
-    this.addSubj = this._fb.group(
-        {
-            deptName: ['', Validators.required],
-            section: ['', Validators.required],
-            isDefaultSubj: ['', Validators.required],
-            
-      phaseExecutions: this._fb.group({
-        PRE: this._fb.array([this.addPhase()])
-      })
-    });
+    this.courseForm = this._fb.group(
+      {
+        departmentName: ['', Validators.required],
+        section: ['', Validators.required],
+        isDefaultSubj: ['', Validators.required],
+
+        phaseExecutions: this.
+          _fb.group({
+            PRE: this._fb.array([this.addPhase()])
+          })
+      });
     this.selectedValue = "";
     this.courseService.getAllDepartments().subscribe(
-          departments => {
-            this.departments = departments;
-            console.log(this.departments);
-               
-         });
+      departments => {
+        this.departments = departments;
+        console.log(this.departments);
+
+      });
   }
 
   addPhase() {
     return this._fb.group({
-      subjectName: [''],
-      comments: ['']
+      courseName1: [''],
+      comments1: ['']
     });
   }
-
-
-
-  addMorePhase() {
-      alert("add more phase");
+  addMorePhase()
+   {
+    this.addCount++;
+    alert("add more phase" + this.addCount);
     this.phaseArray.push(this.addPhase());
   }
- 
-  onSubmit() {
-    alert("onsubmit");
-    this.course = this.addSubj.value;
-    console.log(this.course);
-    
+  onSubmit() 
+  {
+    this.course = this.courseForm.value;
+    console.log("count==" + this.addCount)
+    for (let i = 0; i <= this.addCount; i++) {
+      this.course.courseName += "," + this.courseForm.value.phaseExecutions.PRE[i].courseName1;
+      this.course.comments += "," + this.courseForm.value.phaseExecutions.PRE[i].comments1;
+    }
+    this.createCourse(this.course);
   }
   get phaseArray() {
-    const control = <FormArray>(<FormGroup>this.addSubj.get('phaseExecutions')).get('PRE');
+    const control = <FormArray>(<FormGroup>this.courseForm.get('phaseExecutions')).get('PRE');
     return control;
   }
   removeInput(index) {
-    console.log(index);
-     this.phaseArray.controls.splice(index,1) ;
-    }
-
-    onChangeDeptName(filterVal: any) {
-        alert("onchange");
-        this.sections = this.departments.filter((item) => item.deptName == filterVal);
-        console.log(this.departments);
-        
-      }
+    this.addCount--;
+    this.phaseArray.controls.splice(index, 1);
+  }
+  onChangeDeptName(filterVal: any) {
+    this.sections = this.departments.filter((item) => item.deptName == filterVal);
+    console.log(this.departments);
+  }
+  createCourse(course: Course): void {
+    this.courseService.createCourse(course)
+      .subscribe(data => {
+        console.log("User created successfully.--");
+      });
+  };
 }

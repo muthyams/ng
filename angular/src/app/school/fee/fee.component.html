@@ -4,10 +4,79 @@
         <li class="breadcrumb-item">
 
         </li>
-        <li class="breadcrumb-item">Add Form</li>
+        <li class="breadcrumb-item">Add Fee Form</li>
     </ol>
 </div>
 <div class="page-content fade-in-up">
-    <div class="row">
+
+    <div class="col-md-6">
+        <div class="ibox">
+            <div class="ibox">
+                <div class="ibox-head">
+                    <div class="ibox-title">add Fee Form
+                        <th *ngIf="isSaved">
+                            <p class="text-success">{{ deptName }} Departments are saved successfully.</p>
+                        </th>
+                    </div>
+                    <div class="ibox-tools">
+                        <a class="ibox-collapse"><i class="fa fa-minus"></i></a>
+                        <a class="fullscreen-link"><i class="fa fa-expand"></i></a>
+                    </div>
+                </div>
+                <div class="ibox-body">
+                    <form [formGroup]="adddept" (ngSubmit)="onSubmit()">
+                        <div class="row">
+                            <div class="col-sm-6 form-group">
+                                <label>Class Name</label>
+                                <select class="form-control" (change)="onChangeDeptName($event.target.value)"
+                                    formControlName="departmentName">
+                                    <option>choose</option>
+                                    <option *ngFor="let departments of departments">{{departments.deptName}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 m-b-20">
+                                <label class="ui-checkbox ui-checkbox-success">
+                                    <input type="checkbox" [checked]="yes" formControlName="isHostel">
+                                    <span class="input-span"></span>Is Hostel</label>
+                            </div>
+                            <div class="col-sm-6 form-group">
+                                <label>Terms</label>
+                                <select class="form-control" formControlName="terms">
+                                    <option>terms</option>
+                                    <option *ngFor="let terms of terms">{{terms}}</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div class="row" *ngFor="let feeType of feeTypes; let i = index;"
+                        >
+                            <div class="col-sm-6 form-group">
+                                <label>Fee Type</label>
+                                <div class="form-group col-md-8" >
+                                        <input type="text" class="form-control" placeholder="fee Type" id="feeType"
+                                        formControlName={{feeType}} value = {{feeType}} [readonly]="true" class ="btn btn-primary btn-fix"/>
+        
+                                    </div>
+                            </div>
+
+
+                            <div class="col-sm-6 form-group">
+                                <label>Fee Amount</label>
+                                <input class="form-control" type="text" placeholder="Fee Amount"
+                                    formControlName="feeAmount">
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-default" type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
+
 </div>

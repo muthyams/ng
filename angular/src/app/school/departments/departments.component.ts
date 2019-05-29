@@ -27,7 +27,7 @@ export class DepartmentsComponent implements OnInit {
   deptName: string;
   isSaved:boolean;
   departments: Departments[]=[];
-
+ 
   constructor(private fb: FormBuilder, private departmentService: AddDepartmentService) {
 
   } 

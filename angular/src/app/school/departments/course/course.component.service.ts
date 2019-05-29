@@ -23,9 +23,9 @@ export class CourseComponentService{
       return this.http.delete(this.deptUrl + "/"+ departments.id);
     }
   
-    public createDepat(departments) {
+    public createCourse(course) {
        // alert('create service'+this.deptUrl +"/saveDept");
-      return this.http.post<Departments>(this.deptUrl +"/saveDept", departments);
+      return this.http.post<Departments>(this.deptUrl +"/saveCourse", course);
     }
 
      //this is get the all the departments 

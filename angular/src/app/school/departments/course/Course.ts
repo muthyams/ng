@@ -1,9 +1,12 @@
+
+import { Subjects } from './subjects';
+
 export class Course
 {
-    deptName:string;
+    departmentName:string;
     section:string;
     isDefaultSubj:string
-    subjectName:string;
+    courseName:string;
     comments:string;
     
 }
