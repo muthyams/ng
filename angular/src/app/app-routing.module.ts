@@ -50,6 +50,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CourseComponent } from './school/departments/course/course.component';
 import { FeeComponent } from './school/fee/fee.component';
+import { AddStudentComponent } from './school/student/add-student/addStudent.component';
 
 
 
@@ -179,6 +180,10 @@ const routes: Routes = [
             {
                 path: "school/fee",
                 component: FeeComponent
+            },
+            {
+                path: "school/student/add-student",
+                component: AddStudentComponent
             }
 
         ]
@@ -252,7 +257,8 @@ const routes: Routes = [
         Error500Component,
         DepartmentsComponent,
         CourseComponent,
-        FeeComponent
+        FeeComponent,
+        AddStudentComponent
     ],
     imports: [RouterModule.forRoot(routes),
         BrowserModule,
