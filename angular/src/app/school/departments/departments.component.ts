@@ -25,47 +25,47 @@ export class DepartmentsComponent implements OnInit {
   private formSubmitAttempt: boolean;
   depts: Departments = new Departments();
   deptName: string;
-  isSaved:boolean;
-  departments: Departments[]=[];
- 
+  isSaved: boolean;
+  departments: Departments[] = [];
+
   constructor(private fb: FormBuilder, private departmentService: AddDepartmentService) {
 
-  } 
-  ngOnInit(): void{
-    this.adddept = this.fb.group(
-    {
-      deptName: ['', Validators.required],
-      isHostel: ['', Validators.required],
-      sections: ['', Validators.required],
-      maxStudents: ['', Validators.required],
-      board: ['', Validators.required],
-      deptDuration: ['',Validators.required]
-    })
-}
-get f() {
-  return this.adddept.controls;
-}
-onSubmit() {
-  alert("sbmit button is called");
-  this.submitted = true;
-
-  this.depts = this.adddept.value;
-  console.log(this.adddept.value);
-  this.deptName = this.depts.deptName;
-  this.createDepat(this.depts);
-  if (this.adddept.valid) {
-        
   }
-}
+  ngOnInit(): void {
+    this.adddept = this.fb.group(
+      {
+        deptName: ['', Validators.required],
+        isHostel: ['', Validators.required],
+        sections: ['', Validators.required],
+        maxStudents: ['', Validators.required],
+        board: ['', Validators.required],
+        deptDuration: ['', Validators.required]
+      })
+  }
+  get f() {
+    return this.adddept.controls;
+  }
+  onSubmit() {
+    alert("sbmit button is called");
+    this.submitted = true;
 
-createDepat(department: Departments): void {
-  this.departmentService.createDepat(department)
-      .subscribe( data => {
+    this.depts = this.adddept.value;
+    console.log(this.adddept.value);
+    this.deptName = this.depts.deptName;
+    this.createDepat(this.depts);
+    if (this.adddept.valid) {
+
+    }
+  }
+
+  createDepat(department: Departments): void {
+    this.departmentService.createDepat(department)
+      .subscribe(data => {
         console.log("User created successfully.--");
-          this.isSaved =  true;
-          this.deptName = department.deptName;
+        this.isSaved = true;
+        this.deptName = department.deptName;
       });
 
-};
+  };
 
 }

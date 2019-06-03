@@ -1,24 +1,43 @@
+import { StudentAddress } from './studentAddress';
+
 export class AddStudent
 {
     studentFirstName:string;
-    studentlastName:string;
+    studentLastName:string;
     gender:string;
     caste:string;
     nationality:string
     dateOfBirth:string;
-    className:string;
-    acadamicYear:string;
+    age:string;
+    
     fatherName:string;
-    mohername:string;
-    occuation:string;
+    motherName:string;
+    occupation:string;
     mobileNumber:string;
     mobileNumber1:string;
     emailAddress:string;
+    asPermenent:string;
+
     houseNumber:string;
     village:string;
     mandal:string;
     district:string;
     state:string;
     pinCode:string;
+
+   
+
+    houseNumber1:string;
+    village1:string;
+    mandal1:string;
+    district1:string;
+    state1:string;
+    pinCode1:string;
+
+    studentAddress: StudentAddress;
+
+    className:string;
+    section:string;
+    isHostel:string;
 
 }

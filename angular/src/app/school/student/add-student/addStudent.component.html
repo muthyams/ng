@@ -1,0 +1,321 @@
+<div class="page-heading">
+    <h1 class="page-title">{{studentHeader}}</h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="index.html"><i class="la la-home font-20"></i></a>
+        </li>
+        <li class="breadcrumb-item">{{studentHeader}}</li>
+    </ol>
+</div>
+
+    <div class="page-content fade-in-up">
+            <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="ibox">
+                    <div class="ibox">
+                        <div class="ibox-head">
+                            <div class="ibox-title"> Studnet Form
+                            </div>
+                            <div class="ibox-tools">
+                                <a class="ibox-collapse"><i class="fa fa-minus"></i></a>
+                                <a class="fullscreen-link"><i class="fa fa-expand"></i></a>
+                            </div>
+                        </div>
+                        <div class="ibox-body">
+
+                            <div class="row">
+                                <div class="col-sm-6 form-group">
+                                    <label>First Name</label>
+                                    <input class="form-control" type="text" placeholder="First Name"
+                                        formControlName="studentFirstName">
+                                </div>
+                                <div class="col-sm-6 form-group">
+                                    <label>Last Name</label>
+                                    <input class="form-control" type="text" placeholder="Last Name"
+                                        formControlName="studentLastName">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class=" col-sm-6 form-group" >
+                                    <label> Date Of Birth  {{dateOfBirth}}</label>
+                                    <div class="input-group date">
+                                        <span class="input-group-addon bg-white"><i class="fa fa-calendar"></i></span>
+                                        <input class="form-control" type="date" formControlName="dateOfBirth" [(ngModel)]="dateOfBirth">
+                                    </div>
+                                    {{dateOfBirth}}
+                                </div>
+
+
+                                <div class="col-sm-6 form-group">
+                                    <label>Age</label>
+                                    <input class="form-control" type="text" placeholder="Age" formControlName="age">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-6 form-group">
+                                    <label>Gender </label>
+                                    <select class="form-control" formControlName="gender">
+                                            <option>choose</option>
+                                            <option *ngFor="let gender of gender">{{gender}}</option>
+                                          </select>
+                                </div>
+                                <div class="col-sm-6 form-group">
+                                    <label>caste</label>
+                                    <select class="form-control" formControlName="caste">
+                                            <option>choose</option>
+                                            <option *ngFor="let caste of caste">{{caste}}</option>
+                                          </select>
+                                </div>
+                            </div>
+                            <div class="Nationality">
+                                <div class="col-sm-6 form-group">
+                                    <label>Natinolity </label>
+                                    <select class="form-control" formControlName="natinolity">
+                                            <option>choose</option>
+                                            <option *ngFor="let natinolity of natinolity">{{natinolity}}</option>
+                                          </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="ibox">
+                    <div class="ibox-head">
+                        <div class="ibox-title">Parent Form</div>
+                        <div class="ibox-tools">
+                            <a class="ibox-collapse"><i class="fa fa-minus"></i></a>
+                            <a class="fullscreen-link"><i class="fa fa-expand"></i></a>
+                        </div>
+                    </div>
+                    <div class="ibox-body">
+
+                        <div class="row">
+                            <div class="col-sm-6 form-group">
+                                <label>father Name</label>
+                                <input class="form-control" type="text" placeholder="father Name"
+                                    formControlName="fatherName">
+                            </div>
+                            <div class="col-sm-6 form-group">
+                                <label>Mother Name</label>
+                                <input class="form-control" type="text" placeholder="Mother Name"
+                                    formControlName="motherName">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 form-group">
+                                <label>Occupation</label>
+                                <select class="form-control" formControlName="occupation">
+                                        <option>choose</option>
+                                        <option *ngFor="let occupation of occupation">{{occupation}}</option>
+                                      </select>
+                            </div>
+                        </div>
+<!--
+
+     <div class="col-sm-8">
+                        <input class="form-control" id="ex-phone2" type="text">
+                        <span class="help-block">Data format +186 999 999-9999</span>
+                    </div>
+-->
+
+
+                        <div class="row">
+                            <div class="col-sm-6 form-group">
+                                <label>Mobile Number</label>
+                                <input class="form-control"  type="text" placeholder="Mobile Number"
+                                    formControlName="mobileNumber">
+                            </div>
+                            <div class="col-sm-6 form-group">
+                                <label>Mobile Number</label>
+                                <input class="form-control" type="text" placeholder="Mobile Number"
+                                    formControlName="mobileNumber1">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-10 form-group">
+                                <label>Email Address</label>
+                                <input class="form-control" type="text" placeholder="emailAddress"
+                                    formControlName="emailAddress">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="ibox">
+                    <div class="ibox">
+                        <div class="ibox-head">
+                            <div class="ibox-title"> Permenent Address Form
+                            </div>
+                            <div class="ibox-tools">
+                                <a class="ibox-collapse"><i class="fa fa-minus"></i></a>
+                                <a class="fullscreen-link"><i class="fa fa-expand"></i></a>
+                            </div>
+                        </div>
+                        <div class="ibox-body">
+
+                            <div class="row">
+                                <div class="col-sm-6 form-group">
+                                    <label>House Number</label>
+                                    <input class="form-control" type="text" placeholder="flat/house No"
+                                        formControlName="houseNumber">
+                                </div>
+                                <div class="col-sm-6 form-group">
+                                    <label>Village</label>
+                                    <input class="form-control" type="text" placeholder="village"
+                                        formControlName="village">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-6 form-group">
+                                    <label>Mandal </label>
+                                    <input class="form-control" type="text" placeholder="Mandal"
+                                        formControlName="mandal">
+                                </div>
+                                <div class="col-sm-6 form-group">
+                                    <label>district</label>
+                                    <input class="form-control" type="text" placeholder="District"
+                                        formControlName="district">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6 form-group">
+                                    <label>State </label>
+                                    <input class="form-control" type="text" placeholder="state" formControlName="state">
+                                </div>
+                                <div class="col-sm-6 form-group">
+                                    <label>pinCode</label>
+                                    <input class="form-control" type="text" placeholder="pinCode"
+                                        formControlName="pinCode">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="ibox">
+                    <div class="ibox-head">
+                        <div class="ibox-title">Present Address Form</div>
+                        <label class="ui-checkbox ui-checkbox-success">
+                            <input type="checkbox" formControlName = "asPermenent" [(ngModel)] = "asPermenent">
+                            <span class="input-span"></span>As Permenent</label>
+                           
+                                
+                            
+                        <div class="ibox-tools">
+                            <a class="ibox-collapse"><i class="fa fa-minus"></i></a>
+                            <a class="fullscreen-link"><i class="fa fa-expand"></i></a>
+                        </div>
+                    </div>
+                    <div *ngIf="!asPermenent">
+                    <div class="ibox-body">
+                        <div class="row">
+                            <div class="col-sm-6 form-group">
+                                <label>House Number</label>
+                                <input class="form-control"   type="text" placeholder="flat/house No"
+                                    formControlName="houseNumber1">
+                            </div>
+                            <div class="col-sm-6 form-group">
+                                <label>Village</label>
+                                <input class="form-control" type="text" placeholder="village" formControlName="village1">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 form-group">
+                                <label>Mandal </label>
+                                <input class="form-control" type="text" placeholder="Mandal" formControlName="mandal1">
+                            </div>
+                            <div class="col-sm-6 form-group">
+                                <label>district</label>
+                                <input class="form-control" type="text" placeholder="District"
+                                    formControlName="district1">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 form-group">
+                                <label>State </label>
+                                <input class="form-control" type="text" placeholder="state" formControlName="state1">
+                            </div>
+                            <div class="col-sm-6 form-group">
+                                <label>pinCode</label>
+                                <input class="form-control" type="text" placeholder="pinCode" formControlName="pinCode1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="ibox">
+                    <div class="ibox">
+                        <div class="ibox-head">
+                            <div class="ibox-title"> Acadamic Inforamtion
+                            </div>
+                            <div class="ibox-tools">
+                                <a class="ibox-collapse"><i class="fa fa-minus"></i></a>
+                                <a class="fullscreen-link"><i class="fa fa-expand"></i></a>
+                            </div>
+                        </div>
+                        <div class="ibox-body">
+
+                            <div class="row">
+                                <div class="col-sm-6 form-group">
+                                    <label>Class</label>
+                                    <input class="form-control" type="text" placeholder="flat/house No"
+                                        formControlName="className">
+                                </div>
+                                <div class="col-sm-6 form-group">
+                                    <label>Section</label>
+                                    <input class="form-control" type="text" placeholder="village"
+                                        formControlName="section">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-6 form-group">
+                                    <label>Is Hostel </label>
+                                    <input class="form-control" type="text" placeholder="Mandal"
+                                        formControlName="isHostel">
+                                </div>
+                               
+                            </div>
+                            <button  class="btn btn-success btn-fix">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="ibox">
+                    <div class="ibox-head">
+                        <div class="ibox-title">Present Address Form</div>
+                        <label class="ui-checkbox ui-checkbox-success">
+                            <input type="checkbox">
+                            <span class="input-span"></span>As Permenent</label>
+
+                        <div class="ibox-tools">
+                            <a class="ibox-collapse"><i class="fa fa-minus"></i></a>
+                            <a class="fullscreen-link"><i class="fa fa-expand"></i></a>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+
+
+        
+    </form>
+    </div>

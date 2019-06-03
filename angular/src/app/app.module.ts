@@ -9,6 +9,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AddDepartmentService } from './school/departments/add-department.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CourseComponentService } from './school/departments/course/course.component.service';
+import { StudentService } from './school/student/add-student/student.service';
 
 
 
@@ -24,7 +25,7 @@ import { CourseComponentService } from './school/departments/course/course.compo
     FormsModule,
     HttpClientModule
   ],
-  providers: [ScriptLoaderService,AddDepartmentService, CourseComponentService],
+  providers: [ScriptLoaderService,AddDepartmentService, CourseComponentService, AddDepartmentService, StudentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
