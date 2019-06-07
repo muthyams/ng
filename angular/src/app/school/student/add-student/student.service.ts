@@ -23,7 +23,7 @@ export class StudentService{
       return this.http.delete(this.studentUrl + "/"+ students.id);
     }
   
-    public createStudent(students) {
+    public createStudent(students):Observable<AddStudent>  {
        // alert('create service'+this.deptUrl +"/saveDept");
       return this.http.post<AddStudent>(this.studentUrl +"/saveStudent", students);
     }

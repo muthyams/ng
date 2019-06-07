@@ -2,6 +2,7 @@ import { StudentAddress } from './studentAddress';
 
 export class AddStudent
 {
+    studentId:any;
     studentFirstName:string;
     studentLastName:string;
     gender:string;
