@@ -20,7 +20,10 @@ export class CourseComponent implements OnInit {
   courseForm: FormGroup;
   course: Course = new Course();
   addCount: number = 0;
-
+  sectionCount:any;
+  
+  //sectionsCount = 4;
+  selectedSection:string[] = [];
   constructor(private _fb: FormBuilder, private courseService: CourseComponentService) {
   }
 
@@ -37,9 +40,10 @@ export class CourseComponent implements OnInit {
           })
       });
     this.selectedValue = "";
+    
     this.courseService.getAllDepartments().subscribe(
-      departments => {
-        this.departments = departments;
+      data => {
+        this.departments = data;
         console.log(this.departments);
 
       });
@@ -53,9 +57,20 @@ export class CourseComponent implements OnInit {
   }
   addMorePhase()
    {
+
+    this.sectionCount = +this.sections.find(x=>x.sections).sections;
+    console.log(this.sectionCount);
+    let sectionAlp = ["A","B","C","D","E","F"];
+    sectionAlp = sectionAlp.slice(0, this.sectionCount);
+     this.selectedSection = sectionAlp
+    console.log(sectionAlp);
+
+    console.log("addMorePhase");
+    for (let i = 1; i < sectionAlp.length; i++) {
     this.addCount++;
-    alert("add more phase" + this.addCount);
+    console.log("add more phase" +i);
     this.phaseArray.push(this.addPhase());
+    }
   }
   onSubmit() 
   {
@@ -64,6 +79,7 @@ export class CourseComponent implements OnInit {
     for (let i = 0; i <= this.addCount; i++) {
       this.course.courseName += "," + this.courseForm.value.phaseExecutions.PRE[i].courseName1;
       this.course.comments += "," + this.courseForm.value.phaseExecutions.PRE[i].comments1;
+         console.log(this.course.comments)
     }
     this.createCourse(this.course);
   }
@@ -73,11 +89,14 @@ export class CourseComponent implements OnInit {
   }
   removeInput(index) {
     this.addCount--;
+
     this.phaseArray.controls.splice(index, 1);
   }
   onChangeDeptName(filterVal: any) {
     this.sections = this.departments.filter((item) => item.deptName == filterVal);
     console.log(this.departments);
+    //console.log(this.sections);
+    
   }
   createCourse(course: Course): void {
     this.courseService.createCourse(course)

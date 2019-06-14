@@ -21,7 +21,7 @@
 
                 <div class="col-sm-6 form-group">
                     <label>Sections</label>
-                    <select class="form-control" formControlName="section">
+                    <select class="form-control" formControlName="section" (change)="addMorePhase($event.target.value)">
                         <option>choose</option>
                         <option *ngFor="let sections of sections">{{sections.sections}}</option>
                     </select>
@@ -38,9 +38,10 @@
                         More Subject+</button>
                     <div formArrayName="PRE">
 
-                        <div class="form-row" *ngFor="let phase of phaseArray.controls; let i = index;"
+                        <div  *ngFor="let phase of phaseArray.controls; let i = index;"
                             [formGroupName]="i">
-                            <div class="form-group col-md-4">
+                        <div class="form-row"  >
+                            <div class="form-group col-md-4" >
                                 <input type="text" class="form-control" placeholder="subject Name" id="courseName1"
                                     formControlName="courseName1" />
 
@@ -53,6 +54,7 @@
                             <button type="button" class="btn btn-outline-danger btn-sm"
                                 (click)="removeInput(i)">Remove</button>
                         </div>
+                    </div>
                     </div>
                 </div>
             </div>

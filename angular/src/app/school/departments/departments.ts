@@ -6,4 +6,6 @@ export class Departments
     sections:number;
     maxStudents:number;
     board:string
+    subjects:string;
+    isIitFundation:string;
 }

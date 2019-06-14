@@ -30,7 +30,7 @@ export class CourseComponentService{
 
      //this is get the all the departments 
     public getAllDepartments():Observable<Departments[]> {
-      return this.http.get<Departments[]>(this.deptUrl);
+      return this.http.get<Departments[]>(this.deptUrl+"/getAllDept");
     }
     
 }

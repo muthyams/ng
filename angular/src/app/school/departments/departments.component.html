@@ -30,34 +30,18 @@
                   <label>Class Name</label>
                   <input class="form-control" type="text" placeholder="Class Name" formControlName="deptName">
                 </div>
-                <div class="form-group">
-                  <label>Year</label>
-                  <select class="form-control" formControlName="deptDuration">
-                    <option>choose</option>
-                    <option *ngFor="let deptDuration of deptDuration" [value]="deptDuration">{{deptDuration}}</option>
-                  </select>
-                </div>
-                <div class="col-6 m-b-20">
-                  <label class="ui-checkbox ui-checkbox-success">
-                    <input type="checkbox" [checked]="yes" formControlName="isHostel">
-                    <span class="input-span"></span>Is Hostel</label>
-                </div>
                 <div class="col-sm-6 form-group">
                   <label>Sections</label>
-                  <select class="form-control" formControlName="sections">
+                  <select class="form-control" (change)="onChangeSection($event.target.value)"
+                    formControlName="sections">
                     <option>choose</option>
                     <option *ngFor="let sections of sections">{{sections}}</option>
                   </select>
                 </div>
-
-                <div class="col-sm-6 form-group">
-                  <label>Max studnets per class r section</label>
-                  <select class="form-control" formControlName="maxStudents">
-                    <option>choose</option>
-                    <option *ngFor="let maxCount of maxCount">{{maxCount}}</option>
-                  </select>
-                </div>
-
+              </div>
+              
+              <!--<div class="row" *ngFor="let selectedSection of selectedSection"> -->
+                  <div class="row">
                 <div class="col-sm-6 form-group">
                   <label>Board </label>
                   <select class="form-control" formControlName="board">
@@ -65,7 +49,15 @@
                     <option *ngFor="let board of board">{{board}}</option>
                   </select>
                 </div>
-              </div>
+                
+               <div class="col-6 m-b-20">
+                  <label class="ui-checkbox ui-checkbox-success">
+                    <input type="checkbox" [checked]="yes" formControlName="isHostel">
+                    <input type="checkbox" formControlName="isHostel" checked data-toggle="toggle">
+                    <span class="input-span"></span>Is Hostel</label>
+                </div> 
+                
+                  </div>
               <div class="form-group">
                 <button class="btn btn-default" type="submit">Submit</button>
               </div>

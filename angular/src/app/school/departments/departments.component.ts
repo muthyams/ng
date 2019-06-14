@@ -27,7 +27,7 @@ export class DepartmentsComponent implements OnInit {
   deptName: string;
   isSaved: boolean;
   departments: Departments[] = [];
-
+  selectedSection:string[] = [];
   constructor(private fb: FormBuilder, private departmentService: AddDepartmentService) {
 
   }
@@ -67,5 +67,14 @@ export class DepartmentsComponent implements OnInit {
       });
 
   };
+
+  onChangeSection(filterVal: any) {
+    this.selectedSection = this.sections.filter((item) => item == filterVal);
+    for (let i = 0; i < filterVal ; i++) {
+     this.selectedSection[i]= this.sections[1];
+     console.log( this.selectedSection);
+    }
+
+  }
 
 }
